@@ -1,0 +1,5 @@
+Django==4.2
+Python==3.11.3
+django-material-admin
+django-froala-editor
+Pillow==9.5.0
