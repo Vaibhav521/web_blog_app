@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Carter+One&family=League+Gothic&family=Poppins&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+body{
+    background-color: #ffffff;
+    font-family: 'poppins';
+    padding-top: 70px;
+    
+}
+
+
+
+
+  /* nav bar start  */
+.navbar{
+    background-color: #16113a;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 10px;
+   
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand{
+    color: #10d354 !important;
+    font-size: 32px;
+    font-family: 'Orbitron' ;
+    
+}
+
+.nav-link{
+    color: #e9e7f9;
+    font: 'Poppins';
+    font-size: 22px;
+}
+.nav-link:hover{
+    color:#10d354;
+}
+
+
+.custom-toggler.navbar-toggler {
+    border-color: #e9e7f9 !important;
+}
+
+.navbar .navbar-toggler:focus {
+    color: #10d354;
+  } 
+
+
+  /* nav bar end  */
+
+.card-p{
+   
+    color:#272853 ;
+    transition: transform 0.3s ease-out;
+}
+
+.p-btn{
+    background-color: #10d354;
+}
+
+
+.card-p:hover{
+ border-color: #10d354;
+ transform: scale(1.05);
+}
+
+
+
+
+.sub-heading{
+    font-size: 30px;
+    color:#272853  ;
+    font-weight: 500;
+    
+}
+
+.main-p-txt{
+    font-family: 'poppins';
+    font-size: 50px;
+}
+.news-text{
+    color: #e9e7f9;
+    font-weight:900;
+}
+
+.carousel-item img {
+    height: 600px;
+    width: auto;
+  }
+
+.footer-div{
+    background-color: #16113a;
+    color:#f8f8f9
+}
+
+
+
+
+.main-img{
+    transition: transform 0.3s ease-out;
+}
+.main-img:hover {
+    transform: scale(1.05);
+  }
+
+
+  .btn-outline {
+    color: #10D354;
+    background-color: #ffffff;
+    border-color: #4fbfa8;
+    font-weight: bold;
+    border-radius: 0;
+    font-size: 26px;
+  }
+  
+  .btn-outline:hover,
+  .btn-outline:active,
+  .btn-outline:focus,
+  .btn-outline.active {
+    background: #16113a;
+    color: #ffffff;
+    border-color: #4fbfa8;
+    
+  }
+
+
+  #features  {
+    border-left: 1px solid black;
+    height: 100%;
+   
+  }
+
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: #10d354;
+  }
+  .carousel-caption h2 {
+    background-color: #16113a;
+    color: #eff7fe;
+    padding: 10px;
+  }
+  
+.modal{
+    z-index: 10000 !important;}
+
+
+

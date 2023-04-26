@@ -1,0 +1,43 @@
+{%extends "base.html" %}
+
+{% block title %} {{cat.title}} {%endblock%}
+
+{% block content %}
+
+<div class="container">
+<h1 class="text-center">{{cat.title}}</h1>
+<img  src="/media/{{cat.image}}" class="d-block w-100  img-fluid ">
+<i style="margin-top: 4px;"> Description : {{cat.description}}<p></p></i>
+</div>
+
+<section class="container-fluid  py-5 " style="height: 180px;margin-bottom: 5px;background-color:#16113a ;">
+    <h1 class="text-center" style="color: aliceblue; font-family:'poppins';">{{cat.title}} posts</h1>
+    <img src="../media/down-iocn.png" alt="" class="rounded mx-auto d-block">
+    </section>
+
+    
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+           
+                    {%for p in posts%}
+                    <div class="col  ">
+                            <div class="card card-p m-3 mx-auto" style="width: 20rem;">
+                                <img src="/media/{{p.image}}" class="card-img-top p-2 img-fluid" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">{{p.title}}</h5>
+                                <p class="card-text">{{p.content|safe|truncatewords:10}}</p>
+                                <a href="/blog/{{p.url}}" class="btn  p-btn">Read more</a>
+                                </div>
+                            </div>
+                    </div>
+                    
+                    {%endfor%}
+                        
+         </div>
+    </div>  
+   
+
+
+
+
+{%endblock%}

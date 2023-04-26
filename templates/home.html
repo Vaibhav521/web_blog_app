@@ -1,0 +1,178 @@
+{%extends "base.html" %}
+
+{% block title %} Welmcome to SportsWire {%endblock%}
+
+{% block content %}
+
+<div class="section">
+  <div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-3 g-3 d-flex">
+      <div class="col-lg-6 col align-middle">
+        <div class="px-2 py-2" style="margin: 10px;">
+          <img src="../media/main_page_2.svg" class="img-fluid" alt="...">
+        </div>
+      </div>
+      <div class="col-lg-6 col justify-content-center">
+        <div class="px-5 py-5 mt-5">
+          <div class="px-2 py-2 align-middle">
+            {% if  user.is_authenticated %}
+          <h1 class="fs-25 fs-md-6 fs-lg-7" style="font-family: 'poppins'; color: #16113a; font-weight: bold;">Welcome {{request.user}} <a href="#cat-id"><button type="button" class="btn btn-outline "  >Browse</button></a></h1>
+          
+          {% endif %} 
+            <h1 class="navbar-brand fs-25 fs-md-6 fs-lg-7" >SportsWire</h1>
+
+
+            <p class="fs-5 fs-md-6 fs-lg-7">Bringing you the latest sports stories from around the world - SportWire. Our team of journalists works around the clock to deliver breaking news and in-depth analysis on all the biggest games and events.</p>
+          </div>
+          <div class="px-2 py-2">
+            <section id="features">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="feature-item">
+                      <i class="fas fa-futbol"></i>
+                      <h3 class="text-sm">Latest Sports News</h3>
+                      <p class="text-sm">Stay up-to-date with the latest news and analysis from the world of sports.</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="feature-item">
+                      <i class="fas fa-trophy"></i>
+                      <h3 class="text-sm">Expert Analysis Here</h3>
+                      <p class="text-sm">Get insights and opinions from our team of expert analysts.</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="feature-item">
+                      <i class="fas fa-comments"></i>
+                      <h3 class="text-sm">Engage with Fans</h3>
+                      <p class="text-sm">Join the conversation and interact with fellow sports fans from around the world.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          
+
+
+          {% if not user.is_authenticated %}
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline " data-bs-toggle="modal" data-bs-target="#creataccmodal " style="margin-top: 20px;">create Account</button>
+          
+          {% endif %}
+                       
+              <!-- Modal -->
+              <div class="modal fade" id="creataccmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="creataccmodal">create account</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+              
+                      <form action="{% url 'new_user' %}" method="post"> <!-- after adding name to view path fin it woks -->
+                        {% csrf_token %}
+
+                        
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Username</label>
+                          <input type="text" class="form-control" id="username" name="username" placeholder="Choose a unique name" required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">First Name</label>
+                          <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Last Name</label>
+                          <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Email</label>
+                          <input type="text" class="form-control" id="email"   pattern=".+@.+" name="email" placeholder="Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Password</label>
+                          <input type="password" class="form-control" id="password" name="password" placeholder="" required>
+                        </div>
+
+                                                
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Confirm Password</label>
+                          <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="" required>
+                        </div>
+                
+                        <div style="margin-top: 10px;">
+                         
+                        <button type="submit"  class="btn btn-primary">Save changes</button>
+                      </div>
+                      </form>
+
+
+      
+                  </div>
+                </div>
+              </div>
+              <!-- Modal -->
+          
+             
+
+
+
+        
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<section class="container-fluid  py-5 w-100 " style="height: 180px; background-color: #16113a;">
+<h1 class="text-center" style="color: aliceblue; font-family:'poppins';">Categories</h1>
+<img src="../media/down-iocn.png" alt="" class="rounded mx-auto d-block">
+</section>
+  
+
+
+    <!-- slider section -->
+
+    {% include 'cat.html' %}
+  
+
+
+
+   
+    
+        
+    <hr>
+<H1 class="text-center" style="color: #16113a;" id="recent-blog-id"> Recent Blog Posts </H1>
+
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3" >
+   
+            {%for p in post%}
+            <div class="col  ">
+                      <div class="card card-p m-3 mx-auto" style="width: 20rem;">
+                        <img src="/media/{{p.image}}" class="card-img-top p-2" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">{{p.title}}</h5>
+                        <p class="card-text">{{p.content|safe|truncatewords:10}}</p>
+                        <a href="/blog/{{p.url}}" class="btn  p-btn">Read more</a>
+                        </div>
+                    </div>
+            </div>
+            {%endfor%}
+                
+            </div>
+    </div>          
+
+{%endblock%}

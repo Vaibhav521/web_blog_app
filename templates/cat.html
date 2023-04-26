@@ -1,0 +1,29 @@
+<div class="container p-5 slider" id="cat-id">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      {% for c in cat %}
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %} aria-label="Slide {{ forloop.counter }}">{{ forloop.counter }}</button>
+      {% endfor %}
+    </div>
+    <div class="carousel-inner">
+      {% for c in cat %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <a href="/category/{{c.url}}">
+            <img src="/media/{{c.image}}" class="d-block w-100 img-fluid" style="object-fit: cover; object-position: center;">
+        </a>
+          <div class="carousel-caption d-none d-md-block">
+            <h2>{{ c.title }}</h2>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

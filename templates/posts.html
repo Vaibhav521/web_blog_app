@@ -1,0 +1,47 @@
+{%extends "base.html" %}
+
+{% block title %} {{post.title}} {%endblock%}
+
+{% block content %}
+
+<div class="container p-5">
+    
+    <h1 class="text-center">{{post.title}}</h1><br>
+    
+    <img src="/media/{{post.image}}" class="img-fluid ">
+
+    <div style="background-color: #16113a; color:aliceblue ; margin-top: 5px;"> <h3>Category : {{post.cat}} </h3> </div><br>
+
+    <p>{{post.content | safe}}</p>
+
+</div>
+
+<div class="container p-5">
+    {% if  user.is_authenticated %}
+<h2>Add a Comment</h2>
+<form action="{% url 'postComment' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="comment" placeholder="Enter comment here">
+    <input type="hidden" name="post_id" value="{{post.post_id}}" >
+    <input type="hidden" name="post_url" value="{{post.url}}" >
+    <input type="submit" value="Submit" class="btn btn-outline ">
+</form>
+    {% else %}
+    <h2>Login to add Comment</h2>
+
+    {% endif %}
+
+<div style="background-color: #16113a; color:aliceblue ; margin-top: 5px;"> <h3 style="margin-top: 10px;">Comments</h3> </div><br>
+{% if comments %}
+  {% for comment in comments %}
+    <div class="comment mb-3">
+      <p class="mb-0"><strong>{{ comment.author }}</strong></p>
+      <p class="mb-0" style="background-color: #d1f6de;">{{ comment.content }}</p>
+      <small class="text-muted">{{ comment.created_at|date:"F d, Y" }}</small>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>No comments yet.</p>
+{% endif %}
+</div>
+{%endblock%}
